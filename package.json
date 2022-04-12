@@ -1,0 +1,33 @@
+{
+  "name": "gilda",
+  "version": "1.0.0",
+  "description": "Gestor de inventario",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/El-1-de-la-Pecera/GILDA.git"
+  },
+  "keywords": [
+    "gestor",
+    "inventario",
+    "ventas",
+    "bodega",
+    "sala",
+    "de",
+    "ventas",
+    "proyecto",
+    "cliente"
+  ],
+  "author": "Eduardo Galvez,Christian Bastias,Fernando Vergara, Joaquin Neira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/El-1-de-la-Pecera/GILDA/issues"
+  },
+  "homepage": "https://github.com/El-1-de-la-Pecera/GILDA#readme",
+  "devDependencies": {
+    "electron": "^18.0.3"
+  }
+}
