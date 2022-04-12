@@ -30,5 +30,8 @@
   "homepage": "https://github.com/El-1-de-la-Pecera/GILDA#readme",
   "devDependencies": {
     "electron": "^18.0.3"
+  },
+  "dependencies": {
+    "openid-client": "^5.1.4"
   }
 }
