@@ -1,2 +1,6 @@
-Esto es GILDA
-Chupalo feña x3
+## GILDA
+#### Prerrequisitos
+--------------------------------------
+npm
+--------------------------------------
+node
