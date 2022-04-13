@@ -4,6 +4,11 @@ const { Client } = require('pg')
 const client = new Client()
 const path = require('path')
 
+client.query('CREATE DATABASE logrocket_oauth2;', ['Hello world!'], (err, res) => {
+  console.log(err ? err.stack : res.rows[0].message) // Hello World!
+  client.end()
+})
+
 function createWindow () {
   const win = new BrowserWindow({
     width: 800,
