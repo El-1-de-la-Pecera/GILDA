@@ -1,4 +1,8 @@
 const { app, BrowserWindow } = require('electron')
+const { Client } = require('pg')
+
+const client = new Client()
+
 const createWindow = () => {
     const win = new BrowserWindow({
       width: 800,
