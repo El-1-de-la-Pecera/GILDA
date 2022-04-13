@@ -1,40 +1,40 @@
 {
   "name": "gilda",
-  "version": "1.0.0",
-  "description": "Gestor de inventario",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/El-1-de-la-Pecera/GILDA.git"
-  },
-  "keywords": [
-    "gestor",
-    "inventario",
-    "ventas",
-    "bodega",
-    "sala",
-    "de",
-    "ventas",
-    "proyecto",
-    "cliente"
-  ],
-  "author": "Eduardo Galvez,Christian Bastias,Fernando Vergara, Joaquin Neira",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/El-1-de-la-Pecera/GILDA/issues"
-  },
-  "homepage": "https://github.com/El-1-de-la-Pecera/GILDA#readme",
-  "devDependencies": {
-    "electron": "^18.0.3"
-  },
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "electron-dev": "^1.0.1",
-    "openid-client": "^5.1.4",
-    "pg": "^8.7.3",
-    "pgtools": "^0.3.2"
+    "@auth0/auth0-react": "^1.9.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.0.1",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-json-pretty": "^2.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
