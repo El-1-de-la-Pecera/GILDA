@@ -1,4 +1,7 @@
 const { app, BrowserWindow, ipcMain, nativeTheme } = require('electron')
+const { Client } = require('pg')
+
+const client = new Client()
 const path = require('path')
 
 function createWindow () {
