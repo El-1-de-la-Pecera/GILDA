@@ -1,7 +1,9 @@
 import Link from "next/link";
 import React from "react";
+import { useUser } from "@auth0/nextjs-auth0";
 
 function Navbar() {
+  const { user } = useUser();
   return (
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800">
       <div className="container flex flex-wrap justify-between items-center mx-auto px-7">
@@ -50,7 +52,7 @@ function Navbar() {
             <li>
               <Link href="/new">
                 <a className="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 ml-2 rounded">
-                  New Product
+                  Nuevo producto
                 </a>
               </Link>
               <Link href="/api/auth/login">
@@ -63,10 +65,13 @@ function Navbar() {
                   Logout
                 </a>
               </Link>
+
               <Link href="profile">
-                <a className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 ml-2 rounded">
-                  Profile
-                </a>
+                <img
+                  className="inline-block h-8 w-8 rounded-full ring-2 ml-2 ring-white"
+                  src={user.picture}
+                  alt={user.name}
+                />
               </Link>
             </li>
           </ul>

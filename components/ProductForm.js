@@ -91,7 +91,7 @@ export function ProductForm() {
             type="text"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-600 dark:border-slate-900 dark:text-white"
             name="price"
-            placeholder="1.990"
+            placeholder="1990"
             onChange={handleChange}
             value={product.price}
           />

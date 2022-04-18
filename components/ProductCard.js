@@ -14,8 +14,6 @@ export function ProductCard({ product }) {
           {product.description}
         </p>
         
-        
-
         <p className="font-bold text-gray-800 dark:text-gray-100 text-2xl">
           {product.price} $
         </p>
