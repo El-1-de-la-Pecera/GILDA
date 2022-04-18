@@ -1,18 +1,14 @@
 import Link from "next/link";
 import React from "react";
-import { useUser } from "@auth0/nextjs-auth0";
 
-function Navbar() {
-  const { user } = useUser();
+export default function Navbar() {
   return (
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800">
       <div className="container flex flex-wrap justify-between items-center mx-auto px-7">
-        <Link href="/">
-          <a className="flex">
-            <span className="self-center text-lg font-semibold whitespace-nowrap dark:text-white">
-              Gilda
-            </span>
-          </a>
+        <Link href="/about">
+        <h1 className="text-2xl font-black leading-normal mt-0 mb-2 text-pink-800">
+            GILDA
+          </h1>
         </Link>
         <button
           data-collapse-toggle="mobile-menu"
@@ -67,11 +63,24 @@ function Navbar() {
               </Link>
 
               <Link href="profile">
-                <img
-                  className="inline-block h-8 w-8 rounded-full ring-2 ml-2 ring-white"
-                  src={user.picture}
-                  alt={user.name}
-                />
+                <button
+                  type="button"
+                  class="inline-flex items-center py-2 px-4 ml-2 text-sm font-medium text-gray-900 bg-white rounded-l-lg rounded-r-lg border border-gray-400 hover:bg-gray-100 hover:text-purple-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
+                >
+                  <svg
+                    class="mr-2 w-4 h-4 fill-current"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  Profile
+                </button>
               </Link>
             </li>
           </ul>
@@ -80,5 +89,3 @@ function Navbar() {
     </nav>
   );
 }
-
-export default Navbar;

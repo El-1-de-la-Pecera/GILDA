@@ -7,8 +7,10 @@ CREATE TABLE product(
   name VARCHAR(200),
   description VARCHAR(400),
   price DECIMAL,
-  sku VARCHAR,
+  sku VARCHAR(200),
   createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 describe product;
+
+ALTER TABLE product ADD sku VARCHAR(200);

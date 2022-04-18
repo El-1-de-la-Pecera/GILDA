@@ -28,6 +28,7 @@ const saveProduct = async (req, res) => {
       name,
       description,
       price,
+      sku
     });
 
     return res.status(200).json({ ...req.body, id: result.insertId });

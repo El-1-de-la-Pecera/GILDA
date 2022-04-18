@@ -13,7 +13,10 @@ export function ProductCard({ product }) {
         <p className="font-normal text-gray-700 dark:text-gray-200">
           {product.description}
         </p>
-        
+        <p className="font-normal text-gray-700 dark:text-gray-200">
+          {product.sku}
+        </p>
+
         <p className="font-bold text-gray-800 dark:text-gray-100 text-2xl">
           {product.price} $
         </p>

@@ -8,6 +8,7 @@ export function ProductForm() {
     name: "",
     description: "",
     price: 0,
+    sku: "",
   });
   const router = useRouter();
 
@@ -38,6 +39,7 @@ export function ProductForm() {
           name: product.name,
           description: product.description,
           price: product.price,
+          sku: product.sku
         });
         toast.success("Task Updated", {
           position: "bottom-center",
@@ -113,6 +115,23 @@ export function ProductForm() {
             onChange={handleChange}
             value={product.description}
           ></textarea>
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="sku"
+            className="block text-gray-700 dark:text-white font-bold mb-2 text-sm"
+          >
+            sku:
+          </label>
+          <input
+            type="text"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-600 dark:border-slate-900 dark:text-white"
+            name="sku"
+            placeholder="xxxxxxxxxxxxxxxx"
+            onChange={handleChange}
+            value={product.sku}
+          />
         </div>
 
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
