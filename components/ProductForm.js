@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 export function ProductForm() {
   const [product, setProduct] = useState({
     name: "",
+    marca:"",
     description: "",
     price: 0,
     sku: ""
@@ -37,9 +38,11 @@ export function ProductForm() {
       if (router.query?.id) {
         await axios.put("/api/products/" + router.query.id, {
           name: product.name,
+          marca: product.marca,
           description: product.description,
           price: product.price,
-          sku: product.sku
+          sku: product.sku,
+          stock: product.stock
         });
         toast.success("Task Updated", {
           position: "bottom-center",
@@ -79,6 +82,23 @@ export function ProductForm() {
             onChange={handleChange}
             value={product.name}
             autoComplete="off"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 dark:text-white text-sm font-bold mb-2"
+            htmlFor="marca"
+          >
+            Marca
+          </label>
+          <input
+            type="text"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-600 dark:border-slate-900 dark:text-white"
+            name="marca"
+            placeholder="Marca"
+            onChange={handleChange}
+            value={product.marca}
           />
         </div>
 
@@ -131,6 +151,23 @@ export function ProductForm() {
             placeholder="xxxxxxxxxxxxxxxx"
             onChange={handleChange}
             value={product.sku}
+          />
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="stock"
+            className="block text-gray-700 dark:text-white font-bold mb-2 text-sm"
+          >
+            stock:
+          </label>
+          <input
+            type="number"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-600 dark:border-slate-900 dark:text-white"
+            name="stock"
+            placeholder="1"
+            onChange={handleChange}
+            value={product.stock}
           />
         </div>
 

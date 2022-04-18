@@ -22,13 +22,15 @@ const getProducts = async (req, res) => {
 
 const saveProduct = async (req, res) => {
   try {
-    const { name, description, price, sku } = req.body;
+    const { name, description, price, sku, marca, stock} = req.body;
 
     const result = await pool.query("INSERT INTO product SET ?", {
       name,
       description,
       price,
-      sku
+      sku,
+      marca,
+      stock
     });
 
     return res.status(200).json({ ...req.body, id: result.insertId });

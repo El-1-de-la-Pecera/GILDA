@@ -14,3 +14,5 @@ CREATE TABLE product(
 describe product;
 
 ALTER TABLE product ADD sku VARCHAR(200);
+ALTER TABLE product ADD marca VARCHAR(200);
+ALTER TABLE product ADD stock INTEGER(4);

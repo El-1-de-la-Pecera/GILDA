@@ -20,9 +20,11 @@ function ProductPage({ product }) {
     <Layout>
       <div className="p-6 bg-white dark:bg-gray-800">
         <p>Nombre: {product.name}</p>
+        <p>Marca: {product.marca}</p>
         <p>Descripcion: {product.description}</p>
         <p>Precio: {product.price}</p>
         <p>Sku: {product.sku}</p>
+        <p>Stock: {product.stock}</p>
       </div>
 
       <div className="mt-7 flex justify-center">
