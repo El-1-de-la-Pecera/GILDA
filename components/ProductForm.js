@@ -8,7 +8,7 @@ export function ProductForm() {
     name: "",
     description: "",
     price: 0,
-    sku: "",
+    sku: ""
   });
   const router = useRouter();
 
@@ -135,7 +135,7 @@ export function ProductForm() {
         </div>
 
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-          {router.query?.id ? "Update Product" : "Save Product"}
+          {router.query?.id ? "Actualizar producto" : "Guardar producto"}
         </button>
       </form>
     </div>

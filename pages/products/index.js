@@ -12,7 +12,7 @@ function ProductsPage({ products = [] }) {
 
   return (
     <Layout>
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-4">
+      <div className="flex flex-wrap overflow-hidden">
         {renderProducts()}
       </div>
     </Layout>

@@ -19,17 +19,18 @@ function ProductPage({ product }) {
   return (
     <Layout>
       <div className="p-6 bg-white dark:bg-gray-800">
-        <p>Name: {product.name}</p>
-        <p>Description: {product.description}</p>
-        <p>Price: {product.price}</p>
+        <p>Nombre: {product.name}</p>
+        <p>Descripcion: {product.description}</p>
+        <p>Precio: {product.price}</p>
+        <p>Sku: {product.sku}</p>
       </div>
 
       <div className="mt-7 flex justify-center">
         <button
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 roundedvisu"
+          className="inline-flex items-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 roundedvisu"
           onClick={() => handleDelete(product.id)}
         >
-          Delete
+          Eliminar
           <svg
             class="h-5 w-5 text-white"
             fill="none"
@@ -48,7 +49,7 @@ function ProductPage({ product }) {
           className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 ml-2 rounded"
           onClick={() => router.push("/products/edit/" + product.id)}
         >
-          Edit
+          Editar
         </button>
       </div>
     </Layout>
