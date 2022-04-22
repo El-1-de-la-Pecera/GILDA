@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { Layout } from "../../components/Layout";
+import { getSession } from "next-auth/react";
 
 function ProductPage({ product }) {
   const router = useRouter();
@@ -18,13 +19,25 @@ function ProductPage({ product }) {
 
   return (
     <Layout>
-      <div className="p-6 bg-white dark:bg-gray-800">
-        <p>Nombre: {product.name}</p>
-        <p>Marca: {product.marca}</p>
-        <p>Descripcion: {product.description}</p>
-        <p>Precio: {product.price}</p>
-        <p>Sku: {product.sku}</p>
-        <p>Stock: {product.stock}</p>
+      <div className="p-6 bg-white text-xl dark:bg-gray-800">
+        <p className="font-bold ">
+          Nombre: <a className="font-normal">{product.name}</a>
+        </p>
+        <p className="font-bold">
+          Marca: <a className="font-normal">{product.marca}</a>
+        </p>
+        <p className="font-bold">
+          Descripcion: <a className="font-normal">{product.description}</a>
+        </p>
+        <p className="font-bold">
+          Precio: <a className="font-normal">{product.price}</a>
+        </p>
+        <p className="font-bold">
+          Sku: <a className="font-normal">{product.sku}</a>
+        </p>
+        <p className="font-bold">
+          Stock: <a className="font-normal">{product.stock}</a>
+        </p>
       </div>
 
       <div className="mt-7 flex justify-center">

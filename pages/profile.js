@@ -1,11 +1,54 @@
 import Navbar from "../components/Navbar";
-import UserDetails from "../components/UserDetails";
+import { getSession, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
-export default function Profile({}) {
+
+
+function HomePage() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  if (status === "loading") {
+    return <p>Loading...</p>;
+  }
+
+  if (status === "unauthenticated") {
+    router.push("/login");
+  }
+
   return (
     <>
-      <Navbar></Navbar>
-      <UserDetails></UserDetails>
+    <Navbar></Navbar>
+    <div>
+      {session ? (
+        <div>
+          <h1>{session.user.email}</h1>
+          <p>{session.user.name}</p>
+          <img src={session.user.image} alt="" />
+        </div>
+      ) : (
+        <p>skeleton</p>
+      )}
+    </div>
     </>
-  );
+  );    
 }
+
+export const getServerSideProps = async (context) => {
+  const session = await getSession(context);
+
+  if (!session)
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  return {
+    props: {
+      session,
+    },
+  };
+};
+
+export default HomePage;

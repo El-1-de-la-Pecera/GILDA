@@ -1,3 +1,4 @@
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 
@@ -40,15 +41,11 @@ export default function Navbar() {
                   Nuevo producto
                 </a>
               </Link>
-              <Link href="/api/auth/login">
-                <a className="bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-4 ml-2 rounded">
-                  Login
-                </a>
-              </Link>
-              <Link href="/api/auth/logout">
-                <a className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 ml-2 rounded">
-                  Logout
-                </a>
+
+              <Link href="profile">
+                <button onClick={() => signOut("github")} className="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 ml-2 rounded">
+                  Cerrar sesion
+                </button>
               </Link>
 
               <Link href="profile">

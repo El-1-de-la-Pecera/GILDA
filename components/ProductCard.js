@@ -24,7 +24,7 @@ export function ProductCard({ product }) {
           {product.price} $
         </p>
         <p className="font-bold text-gray-800 dark:text-gray-100 text-2xl">
-          {product.stock}
+          Stock: {product.stock}
         </p>
       </a>
     </Link>

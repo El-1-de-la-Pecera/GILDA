@@ -1,12 +1,11 @@
 import Head from "next/head";
 import "../styles/globals.css";
-
 import React from "react";
-import { UserProvider } from "@auth0/nextjs-auth0";
+import { SessionProvider } from "next-auth/react";
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    <UserProvider>
+    <SessionProvider>
       <Head>
         <meta
           name="viewport"
@@ -15,6 +14,6 @@ export default function MyApp({ Component, pageProps }) {
         <title>Gilda</title>
       </Head>
       <Component {...pageProps} />
-    </UserProvider>
+    </SessionProvider>
   );
 }
