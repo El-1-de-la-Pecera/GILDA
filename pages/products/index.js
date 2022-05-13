@@ -10,7 +10,7 @@ function ProductsPage({ products = [] }) {
   const router = useRouter();
 
   const renderProducts = () => {
-    if (products.length === 0) return <h1>No existen producos</h1>;
+    if (products.length === 0) return <h1>No existen productos</h1>;
     return products.map((product) => (
       <ProductCard key={product.id} product={product} />
     ));
@@ -40,7 +40,7 @@ export const getServerSideProps = async (context) => {
   return {
     props: {
       session,
-      products,
+      products:products.rows,
     },
   };
 };

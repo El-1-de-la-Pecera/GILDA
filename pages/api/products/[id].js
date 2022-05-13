@@ -1,4 +1,4 @@
-import { pool } from "../../../config/db";
+import { client } from "../../../config/db";
 
 export default async function handler(req, res) {
   switch (req.method) {
@@ -15,7 +15,7 @@ export default async function handler(req, res) {
 
 const getTask = async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM product WHERE id = ?", [
+    const result = await client.query("SELECT * FROM product WHERE id = ?", [
       req.query.id,
     ]);
     return res.status(200).json(result[0]);
@@ -26,7 +26,7 @@ const getTask = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
   try {
-    await pool.query("DELETE FROM product WHERE id = ?", [req.query.id]);
+    await client.query("DELETE FROM product WHERE id = ?", [req.query.id]);
     return res.status(204).json();
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -36,7 +36,7 @@ const deleteProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
   try {
     console.log(req.body)
-    await pool.query("UPDATE product SET ? WHERE id = ?", [
+    await client.query("UPDATE product SET ? WHERE id = ?", [
       req.body,
       req.query.id,
     ]);

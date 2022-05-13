@@ -6,7 +6,8 @@ import { useRouter } from "next/router";
 export function ProductForm() {
   const [product, setProduct] = useState({
     name: "",
-    marca:"",
+    stock_bodega:"",
+    stock_sala:"",
     description: "",
     price: 0,
     sku: ""
@@ -38,7 +39,8 @@ export function ProductForm() {
       if (router.query?.id) {
         await axios.put("/api/products/" + router.query.id, {
           name: product.name,
-          marca: product.marca,
+          stock_bodega: product.stock_bodega,
+          stock_sala: product.stock_sala,
           description: product.description,
           price: product.price,
           sku: product.sku,
@@ -88,17 +90,34 @@ export function ProductForm() {
         <div className="mb-4">
           <label
             className="block text-gray-700 dark:text-white text-sm font-bold mb-2"
-            htmlFor="marca"
+            htmlFor="stock_bodega"
           >
-            Marca
+            Stock Bodega
           </label>
           <input
-            type="text"
+            type="number"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-600 dark:border-slate-900 dark:text-white"
-            name="marca"
-            placeholder="Marca"
+            name="stock_bodega"
+            placeholder="n° productos en bodega"
             onChange={handleChange}
-            value={product.marca}
+            value={product.stock_bodega}
+          />
+        </div>
+
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 dark:text-white text-sm font-bold mb-2"
+            htmlFor="stock_sala"
+          >
+            Stock en Sala
+          </label>
+          <input
+            type="number"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-600 dark:border-slate-900 dark:text-white"
+            name="stock_sala"
+            placeholder="n° productos en sala"
+            onChange={handleChange}
+            value={product.stock_sala}
           />
         </div>
 
@@ -124,7 +143,7 @@ export function ProductForm() {
             htmlFor="description"
             className="block text-gray-700 dark:text-white font-bold mb-2 text-sm"
           >
-            Descripcion
+            Descripción:
           </label>
           <textarea
             name="description"
@@ -142,7 +161,7 @@ export function ProductForm() {
             htmlFor="sku"
             className="block text-gray-700 dark:text-white font-bold mb-2 text-sm"
           >
-            sku:
+            SKU:
           </label>
           <input
             type="text"
@@ -154,22 +173,7 @@ export function ProductForm() {
           />
         </div>
 
-        <div className="mb-4">
-          <label
-            htmlFor="stock"
-            className="block text-gray-700 dark:text-white font-bold mb-2 text-sm"
-          >
-            stock:
-          </label>
-          <input
-            type="number"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-600 dark:border-slate-900 dark:text-white"
-            name="stock"
-            placeholder="1"
-            onChange={handleChange}
-            value={product.stock}
-          />
-        </div>
+       
 
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
           {router.query?.id ? "Actualizar producto" : "Guardar producto"}

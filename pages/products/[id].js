@@ -24,7 +24,10 @@ function ProductPage({ product }) {
           Nombre: <a className="font-normal">{product.name}</a>
         </p>
         <p className="font-bold">
-          Marca: <a className="font-normal">{product.marca}</a>
+          Stock Bodega: <a className="font-normal">{product.stock_bodega}</a>
+        </p>
+        <p className="font-bold">
+          Stock Sala: <a className="font-normal">{product.stock_sala}</a>
         </p>
         <p className="font-bold">
           Descripcion: <a className="font-normal">{product.description}</a>
@@ -34,9 +37,6 @@ function ProductPage({ product }) {
         </p>
         <p className="font-bold">
           Sku: <a className="font-normal">{product.sku}</a>
-        </p>
-        <p className="font-bold">
-          Stock: <a className="font-normal">{product.stock}</a>
         </p>
       </div>
 

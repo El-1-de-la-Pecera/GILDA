@@ -1,4 +1,4 @@
-import { pool } from "../../../config/db";
+import { client } from "../../../config/db";
 
 export default async function handler(req, res) {
   switch (req.method) {
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 
 const getProducts = async (req, res) => {
   try {
-    const results = await pool.query("SELECT * FROM product");
+    const results = await client.query("SELECT * FROM product");
     return res.status(200).json(results);
   } catch (error) {
     return res.status(500).json({ error });
@@ -21,17 +21,18 @@ const getProducts = async (req, res) => {
 };
 
 const saveProduct = async (req, res) => {
+  
   try {
-    const { name, description, price, sku, marca, stock} = req.body;
+    const { name, description, stock_bodega, stock_sala, price, sku} = req.body;
 
-    const result = await pool.query("INSERT INTO product SET ?", {
+    const result = await client.query("INSERT INTO product SET ?", 
       name,
       description,
+      stock_bodega,
+      stock_sala,
       price,
-      sku,
-      marca,
-      stock
-    });
+      sku
+    );
 
     return res.status(200).json({ ...req.body, id: result.insertId });
   } catch (error) {
