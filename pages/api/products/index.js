@@ -23,17 +23,17 @@ const getProducts = async (req, res) => {
 const saveProduct = async (req, res) => {
   
   try {
-    const { name, description, stock_bodega, stock_sala, price, sku} = req.body;
+    const { name, stock_bodega, stock_sala, description, price, sku } = req.body;
 
-    const result = await client.query("INSERT INTO product SET ?", 
-      name,
-      description,
+    const result = await client.query("INSERT INTO product(name, stock_bodega, stock_sala, description, price, sku) VALUES($1,$2,$3,$4,$5,$6)", 
+      [name,
       stock_bodega,
       stock_sala,
+      description,
       price,
-      sku
+      sku]
     );
-
+    console.log(result);
     return res.status(200).json({ ...req.body, id: result.insertId });
   } catch (error) {
     return res.status(500).json({ message: error.message });

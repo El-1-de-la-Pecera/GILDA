@@ -14,15 +14,15 @@ export default function Navbar() {
           </Link>
           <Link href="/products">
             <svg
-              class="ml-8 h-8 w-8 text-black"
+              className="ml-8 h-8 w-8 text-black"
               width="24"
               height="24"
               viewBox="0 0 24 24"
-              stroke-width="2"
+              strokeWidth="2"
               stroke="currentColor"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               {" "}
               <path stroke="none" d="M0 0h24v24H0z" />{" "}
@@ -51,18 +51,18 @@ export default function Navbar() {
               <Link href="profile">
                 <button
                   type="button"
-                  class="inline-flex items-center py-2 px-4 ml-2 text-sm font-medium text-gray-900 bg-white rounded-l-lg rounded-r-lg border border-gray-400 hover:bg-gray-100 hover:text-purple-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
+                  className="inline-flex items-center py-2 px-4 ml-2 text-sm font-medium text-gray-900 bg-white rounded-l-lg rounded-r-lg border border-gray-400 hover:bg-gray-100 hover:text-purple-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
                 >
                   <svg
-                    class="mr-2 w-4 h-4 fill-current"
+                    className="mr-2 w-4 h-4 fill-current"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   Profile
