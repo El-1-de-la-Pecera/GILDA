@@ -24,7 +24,10 @@ function ProductPage({ product }) {
           Nombre: <a className="font-normal">{product.name}</a>
         </p>
         <p className="font-bold">
-          Marca: <a className="font-normal">{product.marca}</a>
+          Stock Bodega: <a className="font-normal">{product.stock_bodega}</a>
+        </p>
+        <p className="font-bold">
+          Stock Sala: <a className="font-normal">{product.stock_sala}</a>
         </p>
         <p className="font-bold">
           Descripcion: <a className="font-normal">{product.description}</a>
@@ -35,9 +38,6 @@ function ProductPage({ product }) {
         <p className="font-bold">
           Sku: <a className="font-normal">{product.sku}</a>
         </p>
-        <p className="font-bold">
-          Stock: <a className="font-normal">{product.stock}</a>
-        </p>
       </div>
 
       <div className="mt-7 flex justify-center">
@@ -47,15 +47,15 @@ function ProductPage({ product }) {
         >
           Eliminar
           <svg
-            class="h-5 w-5 text-white"
+            className="h-5 w-5 text-white"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
             />
           </svg>
@@ -72,17 +72,20 @@ function ProductPage({ product }) {
 }
 
 export const getServerSideProps = async ({ query }) => {
-  const { data: product } = await axios.get(
-    "http://localhost:3000/api/products/" + query.id
-  );
-
-  console.log(product);
+  try{
+    const { data: product } = await axios.get(
+      "http://localhost:3000/api/products/" + query.id
+      );
+  //   console.log('buuenas tardes')
+      
+  // console.log(product);
 
   return {
     props: {
       product,
     },
   };
+  }catch(err){console.error(err)}
 };
 
 export default ProductPage;

@@ -1,13 +1,15 @@
-import mysql from "serverless-mysql";
+// import pg from 'pg'
+// const { Client } = pg
+const { Client } = require('pg');
 
-const pool = mysql({
-  config: {
-    host: "localhost",
-    user: "root",
-    password: "root",
-    port: 3306,
-    database: "gilda",
-  },
+const client = new Client({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'gilda',
+  password: 'edu',
+  port: 5432,
 });
 
-export { pool };
+client.connect();
+
+export { client };
