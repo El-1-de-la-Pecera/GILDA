@@ -1,5 +1,5 @@
 {
-  "name": "next-mysql-crud",
+  "name": "next-postgresql-crud",
   "private": true,
   "scripts": {
     "dev": "next dev",

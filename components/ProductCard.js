@@ -11,20 +11,20 @@ export function ProductCard({ product }) {
           {product.name}
         </h5>
         <p className="font-normal text-gray-700 dark:text-gray-200">
-          {product.stock_bodega}
+          SB: {product.stock_bodega}
         </p>
         <p className="font-normal text-gray-700 dark:text-gray-200">
-          {product.stock_sala}
+          SS: {product.stock_sala}
         </p>
         <p className="font-normal text-gray-700 dark:text-gray-200">
           {product.description}
         </p>
         <p className="font-normal text-gray-700 dark:text-gray-200">
-          {product.sku}
+          SKU: {product.sku}
         </p>
 
         <p className="font-bold text-gray-800 dark:text-gray-100 text-2xl">
-          {product.price} $
+          ${product.price}
         </p>
       </a>
     </Link>
