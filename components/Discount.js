@@ -10,7 +10,6 @@ export function Discount() {
     stock_sala:"",
     description: "",
     price: 0,
-    sku: ""
   });
   const router = useRouter();
   
