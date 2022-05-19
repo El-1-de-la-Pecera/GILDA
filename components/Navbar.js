@@ -43,8 +43,14 @@ export default function Navbar() {
               </Link>
 
               <Link href="/newUser">
-                <a className="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 ml-2 rounded">
+                <a className="bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-4 ml-2 rounded">
                   Nuevo usuario
+                </a>
+              </Link>
+
+              <Link href="/users">
+                <a className="bg-yellow-700 hover:bg-yellow-800 text-white font-bold py-2 px-4 ml-2 rounded">
+                  Lista de usuarios
                 </a>
               </Link>
 

@@ -65,6 +65,12 @@ function ProductPage({ product }) {
         >
           Editar
         </button>
+        <button
+          className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 ml-2 rounded"
+          onClick={() => router.push("/products/discount/" + product.id)}
+        >
+          Aplicar descuento 
+        </button>
       </div>
     </Layout>
   );
