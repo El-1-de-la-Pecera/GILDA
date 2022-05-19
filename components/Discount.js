@@ -4,11 +4,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 
 export function Discount() {
-  const [product, setProduct] = useState({
-    name: "",
-    stock_bodega:"",
-    stock_sala:"",
-    description: "",
+  const [product, setProduct] = useState({    
     price: 0,
   });
   const router = useRouter();
@@ -33,7 +29,7 @@ export function Discount() {
     setProduct({ ...product, [name]: value });
   
   const handleChange2 = ({ target: { name, value } }) =>
-    setProduct({ ...product, [name]: value + product.name });
+    setProduct({ ...product, [name]: value * product.name });
   
   
 
