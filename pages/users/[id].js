@@ -22,9 +22,6 @@ function UsersPage({ user }) {
         <p className="font-bold ">
           Nombre: <a className="font-normal">{user.username}</a>
         </p>
-        <p className="font-bold">
-          Admin: <a className="font-normal">{user.isAdmin}</a>
-        </p>
       </div>
 
       <div className="mt-7 flex justify-center">

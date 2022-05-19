@@ -2,12 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
-
+import React from "react";
 export function UserForm() {
   const [user, setUsers] = useState({
     username: '', 
     password: '', 
-    isAdmin : false
+    isAdmin : Boolean
   });
   const router = useRouter();
 
@@ -26,6 +26,8 @@ export function UserForm() {
     }
     console.log("called");
   }, [router.query.id]);
+
+  const [checked, setChecked] = React.useState(true);
 
   const handleChange = ({ target: { name, value } }) =>
     setUsers({ ...user, [name]: value });
@@ -99,17 +101,17 @@ export function UserForm() {
           />
         </div>
 
+        
         <div className="mb-4">
           <label
             className="block text-gray-700 dark:text-white text-sm font-bold mb-2"
-            htmlFor="isAdmin"
+            htmlFor="password"
           >
             isAdmin
           </label>
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-600 dark:border-slate-900 dark:text-white"
-            type="checkbox"
-            checked="true"
+            type="text"
             placeholder="isAdmin"
             id="isAdmin"
             name="isAdmin"
@@ -118,7 +120,8 @@ export function UserForm() {
             autoComplete="off"
           />
         </div>
-        
+
+
       
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
           {router.query?.id ? "Actualizar user" : "Guardar user"}

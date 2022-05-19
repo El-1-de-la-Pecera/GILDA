@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 export function Discount() {
   const [product, setProduct] = useState({    
     price: 0,
+    discount: 0
   });
   const router = useRouter();
   
@@ -27,10 +28,9 @@ export function Discount() {
 
   const handleChange = ({ target: { name, value } }) =>
     setProduct({ ...product, [name]: value });
-  
+
   const handleChange2 = ({ target: { name, value } }) =>
-    setProduct({ ...product, [name]: value * product.name });
-  
+    setProduct({ ...product, [name]: value });
   
 
   const handleSubmit = async (e) => {
@@ -61,7 +61,7 @@ export function Discount() {
       toast.error(error.response.data.message);
     }
   };
-
+  
   return (
     <div className="w-full max-w-xs">
       <form
@@ -96,14 +96,36 @@ export function Discount() {
           >
             Descuento:
           </label>
+
           <input
-            type="text"
+            type="range"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-600 dark:border-slate-900 dark:text-white"
+            name="descuento"
+            id="descuento"
+            placeholder="1990"
+            onChange={handleChange2}
+            value={product.discount}
+          />
+          <input
+            type="number"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-600 dark:border-slate-900 dark:text-white"
+            name="descuento"
+            id="descuento"
+            placeholder="1990"
+            onChange={handleChange2}
+            value={product.discount}
+            disabled
+          />
+
+          <input
+            type="number"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline dark:bg-gray-600 dark:border-slate-900 dark:text-white"
             name="price"
-            id="descuento"
+            id="price"
             placeholder="1990"
             onChange={handleChange}
             value={product.price}
+            disabled
           />
         </div>
 
