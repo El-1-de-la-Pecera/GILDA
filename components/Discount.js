@@ -94,7 +94,6 @@ export function Discount() {
             htmlFor="price"
             className="block text-gray-700 dark:text-white font-bold mb-2 text-sm"
           >
-            
             Descuento:
           </label>
           <input
