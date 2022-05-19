@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { Layout } from "../../components/Layout";
 
-function UsersPage({ users }) {
+function UsersPage({ user }) {
   const router = useRouter();
 
   const handleDelete = async (id) => {
@@ -20,17 +20,17 @@ function UsersPage({ users }) {
     <Layout>
       <div className="p-6 bg-white text-xl dark:bg-gray-800">
         <p className="font-bold ">
-          Nombre: <a className="font-normal">{users.username}</a>
+          Nombre: <a className="font-normal">{user.username}</a>
         </p>
         <p className="font-bold">
-          Admin: <a className="font-normal">{users.isAdmin}</a>
+          Admin: <a className="font-normal">{user.isAdmin}</a>
         </p>
       </div>
 
       <div className="mt-7 flex justify-center">
         <button
           className="inline-flex items-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 roundedvisu"
-          onClick={() => handleDelete(users.id)}
+          onClick={() => handleDelete(user.id)}
         >
           Eliminar
           <svg
@@ -49,7 +49,7 @@ function UsersPage({ users }) {
         </button>
         <button
           className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 ml-2 rounded"
-          onClick={() => router.push("/users/edit/" + users.id)}
+          onClick={() => router.push("/users/edit/" + user.id)}
         >
           Editar
         </button>

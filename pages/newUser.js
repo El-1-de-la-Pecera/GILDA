@@ -3,7 +3,7 @@ import { UserForm } from "../components/UserForm";
 import { Layout } from "../components/Layout";
 
 
-function NewPage() {
+function NewPageUser() {
   return (
     <Layout>
       <div className="h-5/6 grid place-items-center">
@@ -12,7 +12,7 @@ function NewPage() {
     </Layout>
   );
 }
-export default NewPage;
+export default NewPageUser;
 
 export const getServerSideProps = async (context) => {
   const res = await axios.get("http://localhost:3001/api/users");
