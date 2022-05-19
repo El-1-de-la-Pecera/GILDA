@@ -1,13 +1,14 @@
 // import pg from 'pg'
 // const { Client } = pg
+
 const { Client } = require('pg');
 
 const client = new Client({
-  user: 'postgres',
   host: 'localhost',
-  database: 'gilda',
-  password: 'edu',
+  user: 'root',
+  password: 'root',
   port: 5432,
+  database: 'gilda',
 });
 
 client.connect();

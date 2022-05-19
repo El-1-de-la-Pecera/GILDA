@@ -13,4 +13,11 @@ CREATE TABLE product(
   createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE users(
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(50),
+  password VARCHAR(50),
+  isAdmin BOOLEAN
+);
+
 describe product;

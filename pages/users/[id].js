@@ -3,13 +3,13 @@ import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { Layout } from "../../components/Layout";
 
-function ProductPage({ product }) {
+function UsersPage({ users }) {
   const router = useRouter();
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete("/api/products/" + id);
-      toast.success("producto eliminado");
+      await axios.delete("/api/users/" + id);
+      toast.success("Usuario eliminado");
       router.push("/");
     } catch (error) {
       console.error(error.response.data.message);
@@ -20,29 +20,17 @@ function ProductPage({ product }) {
     <Layout>
       <div className="p-6 bg-white text-xl dark:bg-gray-800">
         <p className="font-bold ">
-          Nombre: <a className="font-normal">{product.name}</a>
+          Nombre: <a className="font-normal">{users.username}</a>
         </p>
         <p className="font-bold">
-          Stock Bodega: <a className="font-normal">{product.stock_bodega}</a>
-        </p>
-        <p className="font-bold">
-          Stock Sala: <a className="font-normal">{product.stock_sala}</a>
-        </p>
-        <p className="font-bold">
-          Descripcion: <a className="font-normal">{product.description}</a>
-        </p>
-        <p className="font-bold">
-          Precio: <a className="font-normal">{product.price}</a>
-        </p>
-        <p className="font-bold">
-          Sku: <a className="font-normal">{product.sku}</a>
+          Admin: <a className="font-normal">{users.isAdmin}</a>
         </p>
       </div>
 
       <div className="mt-7 flex justify-center">
         <button
           className="inline-flex items-center bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 roundedvisu"
-          onClick={() => handleDelete(product.id)}
+          onClick={() => handleDelete(users.id)}
         >
           Eliminar
           <svg
@@ -61,7 +49,7 @@ function ProductPage({ product }) {
         </button>
         <button
           className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 ml-2 rounded"
-          onClick={() => router.push("/products/edit/" + product.id)}
+          onClick={() => router.push("/users/edit/" + users.id)}
         >
           Editar
         </button>
@@ -72,16 +60,16 @@ function ProductPage({ product }) {
 
 export const getServerSideProps = async ({ query }) => {
   try{
-    const { data: product } = await axios.get(
-      "http://localhost:3001/api/products/" + query.id
+    const { data: user } = await axios.get(
+      "http://localhost:3001/api/users/" + query.id
       );
 
-  return {
-    props: {
-      product,
-    },
-  };
+    return {
+      props: {
+        user,
+      },
+    };
   }catch(err){console.error(err)}
 };
 
-export default ProductPage;
+export default UsersPage;

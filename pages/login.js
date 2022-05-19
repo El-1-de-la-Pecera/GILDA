@@ -1,13 +1,9 @@
-import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 function LoginPage() {
-  const { data: session, status } = useSession();
   const router = useRouter();
 
-  if (status !== "loading" && status === "authenticated") {
-    router.push("/");
-  }
+  
   return (
     <>
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -50,13 +46,13 @@ function LoginPage() {
           <div>
             <button
               className="px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900"
-              onClick={() => signIn("github")}
+              /*onClick={() => signIn("github")}*/
             >
               Ingresar con github
             </button>
             <button
               className="px-6 py-2 mt-4 ml-2 text-white bg-blue-600 rounded-lg hover:bg-blue-900"
-              onClick={() => signIn("github")}
+              /*onClick={() => router.push("_app")}*/
             >
               Ingresar con correo
             </button>

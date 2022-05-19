@@ -2,11 +2,9 @@ import axios from "axios";
 import { Layout } from "../../components/Layout";
 import { ProductCard } from "../../components/ProductCard";
 
-import { useSession, getSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 function ProductsPage({ products = [] }) {
-  const { data: session, status } = useSession();
   const router = useRouter();
 
   const renderProducts = () => {
@@ -25,10 +23,10 @@ function ProductsPage({ products = [] }) {
 
 export const getServerSideProps = async (context) => {
   const { data: products } = await axios.get(
-    "http://localhost:3000/api/products"
+    "http://localhost:3001/api/products"
   );
 
-
+    // if session pase else redirect to login
   return {
     props: {
       products:products.rows,

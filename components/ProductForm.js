@@ -46,12 +46,12 @@ export function ProductForm() {
           sku: product.sku,
           stock: product.stock
         });
-        toast.success("Task Updated", {
+        toast.success("Producto actualizado", {
           position: "bottom-center",
         });
       } else {
         await axios.post("/api/products", product);
-        toast.success("Task Saved", {
+        toast.success("Producto guardado", {
           position: "bottom-center",
         });
       }

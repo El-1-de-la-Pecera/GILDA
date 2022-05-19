@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ProductForm } from "../components/ProductForm";
+import { UserForm } from "../components/UserForm";
 import { Layout } from "../components/Layout";
 
 
@@ -7,7 +7,7 @@ function NewPage() {
   return (
     <Layout>
       <div className="h-5/6 grid place-items-center">
-        <ProductForm />
+        <UserForm/>
       </div>
     </Layout>
   );
@@ -15,15 +15,15 @@ function NewPage() {
 export default NewPage;
 
 export const getServerSideProps = async (context) => {
-  const res = await axios.get("http://localhost:3001/api/products");
+  const res = await axios.get("http://localhost:3001/api/users");
   
-  const { data: products } = await axios.get(
-    "http://localhost:3001/api/products"
+  const { data: users } = await axios.get(
+    "http://localhost:3001/api/users"
   );
 
   return {
     props: {
-      products: res.data,
+      users: res.data,
     },
   };
 };
