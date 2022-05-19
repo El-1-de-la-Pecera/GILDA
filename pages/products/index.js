@@ -28,18 +28,9 @@ export const getServerSideProps = async (context) => {
     "http://localhost:3000/api/products"
   );
 
-  const session = await getSession(context);
 
-  if (!session)
-    return {
-      redirect: {
-        destination: "/login",
-        permanent: false,
-      },
-    };
   return {
     props: {
-      session,
       products:products.rows,
     },
   };
