@@ -1,7 +1,5 @@
--- CREATE DATABASE gilda;
 
-use gilda;
-
+CREATE DATABASE gilda;
 CREATE TABLE product(
   id SERIAL PRIMARY KEY,
   name VARCHAR(200),
@@ -15,9 +13,8 @@ CREATE TABLE product(
 
 CREATE TABLE users(
   id SERIAL PRIMARY KEY,
-  username VARCHAR(50),
+  username VARCHAR(50) unique,
+  name VARCHAR(50),
   password VARCHAR(50),
-  isAdmin BOOLEAN
+  tipo VARCHAR(50)
 );
-
-describe product;
