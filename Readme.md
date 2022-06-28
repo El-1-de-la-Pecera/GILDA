@@ -2,6 +2,7 @@
 
 ## Base de datos
 
+cd client
 - npm run dev
 
 - PostgreSQL
@@ -12,4 +13,5 @@
     - port: 5432
 
 ## Cliente
+En raiz
 - npm run 
