@@ -149,6 +149,7 @@ const ProductForm = () => {
                   display: "block",
                   margin: ".5rem 0",
                 }}
+                disabled = {token.tipo == "Vendedor" ? true :false}
                 name="stock_bodega"
                 onChange={handleChange}
                 value={product.stock_bodega}

@@ -9,6 +9,19 @@ const getAllCarrito = async (req, res, next) => {
   }
 };
 
+const deleteAllCarrito = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query("DELETE FROM carrito WHERE id_usuario = $1", [id]);
+    if (result.rowCount === 0) {
+      return res.status(404).json({ msg: "User not found" });
+    }
+    res.sendStatus(204);
+  } catch (error) {
+    next(error);
+  }
+};
+
 //se seleccionan todos los productos de la persona con id x
 const getCarrito = async (req, res, next) => {
   try {
@@ -57,5 +70,6 @@ module.exports = {
   getAllCarrito,
   getCarrito,
   createCarrito,
-  deleteCarrito
+  deleteCarrito,
+  deleteAllCarrito
 };

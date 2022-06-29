@@ -70,6 +70,7 @@ export default function UserList() {
         </Card>
       ))}
       <Button
+        disabled = {token.tipo === "Administrador" ? false : true}
         variant="contained"
         color="warning"
         onClick={() => navigate("/user/new")}

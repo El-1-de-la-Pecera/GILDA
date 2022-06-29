@@ -73,7 +73,6 @@ export default function ProductList() {
             </div>
             <div>
               <Button
-                disabled={token.tipo === "Vendedor" ? true : false}
                 variant="contained"
                 color="inherit"
                 onClick={() => navigate(`/product/${product.id}/edit`)}
@@ -90,7 +89,7 @@ export default function ProductList() {
                 Eliminar
               </Button>
               <Button
-                disabled={token.tipo === "Administrador" ? false : true}
+                disabled={token.tipo === "Reponedor" ? true : false}
                 variant="contained"
                 color="success"
                 onClick={() => {

@@ -3,14 +3,15 @@ const {
   getAllCarrito,
   getCarrito, 
   createCarrito,
-  deleteCarrito
+  deleteCarrito,
+  deleteAllCarrito
 } = require("../controllers/carrito.controller");
 const {
   getAllProducts,
   getProduct,
   createProduct,
   deleteProduct,
-  updateProduct,
+  updateProduct
 } = require("../controllers/product.controller");
 const {
     getAllUsers,
@@ -55,5 +56,7 @@ router.get("/carrito/:id", getCarrito);
 router.post("/carrito", createCarrito);
 
 router.delete("/carrito/:id", deleteCarrito);
+
+router.delete("/carrito/:id/all", deleteAllCarrito);
 
 module.exports = router;

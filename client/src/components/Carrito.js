@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Card, CardContent, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AddIcon from "@mui/icons-material/Add";
+import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
 
 export default function ProductList() {
   const token = JSON.parse(localStorage.getItem("token"));
@@ -22,6 +23,18 @@ export default function ProductList() {
   const handleDelete = async (id) => {
     try {
       await fetch(`/carrito/${id}`, {
+        method: "DELETE",
+      });
+
+      setProducts(product.filter((product) => product.id !== id));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleDeleteAll = async (id) => {
+    try {
+      await fetch(`/carrito/${id}/all`, {
         method: "DELETE",
       });
 
@@ -58,7 +71,6 @@ export default function ProductList() {
             </div>
             <div>
               <Button
-                disabled={token.tipo === "Vendedor" ? true : false}
                 variant="contained"
                 color="warning"
                 onClick={() => handleDelete(product.id)}
@@ -68,6 +80,14 @@ export default function ProductList() {
               </Button>
             </div>
           </CardContent>
+          <Button
+                variant="contained"
+                color="neutral"
+                onClick={() => handleDeleteAll(token.id)}
+                style={{ marginLeft: ".5rem" }}
+              >
+                Limpiar Carrito <CleaningServicesIcon/>
+          </Button>
         </Card>
       ))}
     </>
