@@ -37,8 +37,7 @@ export default function ProductList() {
       await fetch(`/carrito/${id}/all`, {
         method: "DELETE",
       });
-
-      setProducts(product.filter((product) => product.id !== id));
+      
     } catch (err) {
       console.log(err);
     }
@@ -80,16 +79,17 @@ export default function ProductList() {
               </Button>
             </div>
           </CardContent>
-          <Button
+        </Card>
+      ))}
+      <Button
                 variant="contained"
-                color="neutral"
-                onClick={() => handleDeleteAll(token.id)}
+                color="warning"
+                onClick={() => {handleDeleteAll(token.id);
+                navigate("/");}}
                 style={{ marginLeft: ".5rem" }}
               >
                 Limpiar Carrito <CleaningServicesIcon/>
-          </Button>
-        </Card>
-      ))}
+      </Button>
     </>
   );
 }
