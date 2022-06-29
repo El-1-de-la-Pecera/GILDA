@@ -9,9 +9,15 @@ import {
   TextField,
   Typography,
   CircularProgress,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem
 } from "@mui/material";
 
 const ProductForm = () => {
+  const token = JSON.parse(localStorage.getItem("token"));
+
   const [product, setProduct] = useState({
     name: "",
     description: "",
@@ -20,13 +26,12 @@ const ProductForm = () => {
     price: null,
     sku: "",
   });
+  const [descuento, setDescuento] = useState([]);
   const [loading, setLoading] = useState(false);
   const [editing, setEditing] = useState(false);
 
   const navigate = useNavigate();
   const params = useParams();
-
-
   useEffect(() => {
     if (params.id) {
       loadProduct(params.id);
@@ -36,10 +41,29 @@ const ProductForm = () => {
   const loadProduct = async (id) => {
     const res = await fetch("http://localhost:4000/products/" + id);
     const data = await res.json();
-    setProduct({ name: data.name, description: data.description, stock_bodega: data.stock_bodega, stock_sala: data.stock_sala, price: data.price, sku: data.sku });
+    setProduct({
+      name: data.name,
+      description: data.description,
+      stock_bodega: data.stock_bodega,
+      stock_sala: data.stock_sala,
+      price: data.price,
+      sku: data.sku,
+    });
     setEditing(true);
   };
 
+
+  const aplicarDescuento = (e) =>
+    setDescuento({ ...descuento, [e.target.name]: e.target.value });
+
+  const descount = (e) => {
+    aplicarDescuento(e);
+    product.price = product.price - ((e.target.value * product.price) / 100);
+    handleChange(product.price);
+  }
+
+
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
@@ -94,6 +118,7 @@ const ProductForm = () => {
           <CardContent>
             <form onSubmit={handleSubmit}>
               <TextField
+                disabled={token.tipo !== "Administrador"}
                 variant="filled"
                 label="Nombre"
                 sx={{
@@ -107,6 +132,7 @@ const ProductForm = () => {
                 InputLabelProps={{ style: { color: "white" } }}
               />
               <TextField
+                disabled={token.tipo !== "Administrador"}
                 variant="outlined"
                 label="Descripcion"
                 multiline
@@ -146,8 +172,9 @@ const ProductForm = () => {
                 value={product.stock_sala}
                 inputProps={{ style: { color: "white" } }}
                 InputLabelProps={{ style: { color: "white" } }}
-              />  
+              />
               <TextField
+                disabled={token.tipo !== "Administrador"}  
                 variant="filled"
                 label="Precio"
                 sx={{
@@ -161,6 +188,7 @@ const ProductForm = () => {
                 InputLabelProps={{ style: { color: "white" } }}
               />
               <TextField
+                disabled={token.tipo !== "Administrador"}  
                 variant="filled"
                 label="SKU"
                 sx={{
@@ -182,9 +210,37 @@ const ProductForm = () => {
                 {loading ? (
                   <CircularProgress color="inherit" size={25} />
                 ) : (
-                  "Save"
+                  "Guardar"
                 )}
               </Button>
+              <FormControl fullWidth style={{marginTop:"1rem"}}>
+                <InputLabel
+                  style={{ color: "white" }}
+                >
+                  Descuento
+                </InputLabel>
+                <Select value={descuento.values} label="Tipo"name="tipo" onChange={descount} style={{color:"white"}}>
+                  <MenuItem value={10}>10%</MenuItem>
+                  <MenuItem value={20}>20%</MenuItem>
+                  <MenuItem value={30}>30%</MenuItem>
+                  <MenuItem value={40}>40%</MenuItem>
+                  <MenuItem value={50}>50%</MenuItem>
+                  <MenuItem value={60}>60%</MenuItem>
+                  <MenuItem value={70}>70%</MenuItem>
+                  <MenuItem value={80}>80%</MenuItem>
+                  <MenuItem value={90}>90%</MenuItem>
+                </Select>
+              </FormControl>
+
+              <div>
+              {token.tipo !== "Administrador" ? (
+                <Typography variant="p" textAlign="center" color="white">
+                  Algunas funciones estan desabilitadas
+                </Typography>
+              ) : (
+                ""
+              )}
+              </div>
             </form>
           </CardContent>
         </Card>

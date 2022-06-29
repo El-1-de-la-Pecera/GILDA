@@ -1,4 +1,10 @@
 const { Router } = require("express");
+const { 
+  getAllCarrito,
+  getCarrito, 
+  createCarrito,
+  deleteCarrito
+} = require("../controllers/carrito.controller");
 const {
   getAllProducts,
   getProduct,
@@ -40,5 +46,14 @@ router.delete("/user/:id", deleteUser);
 router.put("/user/:id", updateUser);
 
 router.post("/user/login", getUserCredentials);
+
+// usuarios-----------------------------------------------------
+router.get("/carrito", getAllCarrito);
+
+router.get("/carrito/:id", getCarrito);
+
+router.post("/carrito", createCarrito);
+
+router.delete("/carrito/:id", deleteCarrito);
 
 module.exports = router;

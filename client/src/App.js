@@ -7,11 +7,13 @@ import Navbar from "./components/Navbar";
 import { Container } from "@mui/material";
 import UserList from "./components/UserList";
 import UserForm from "./components/UserForm";
+import Profile from "./components/Profile";
+import Carrito from "./components/Carrito";
 export default function App() {
   
   const token = localStorage.getItem('token');
   
-
+  //rutas sin iniciar sesion
   if(!token){
     return (
       <BrowserRouter>
@@ -25,6 +27,7 @@ export default function App() {
       </BrowserRouter>
     );
   }
+  //rutas con logeado
   else{
     return (
       <BrowserRouter>
@@ -37,6 +40,8 @@ export default function App() {
           <Route path="/users" element={<UserList />} />
           <Route path="/user/new" element={<UserForm />} />
           <Route path="/user/:id/edit" element={<UserForm />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/carrito" element={<Carrito />} />
         </Routes>
         </Container>
       </BrowserRouter>

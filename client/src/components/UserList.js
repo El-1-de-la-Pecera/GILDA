@@ -3,6 +3,8 @@ import { Button, Card, CardContent, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export default function UserList() {
+
+  const token = JSON.parse(localStorage.getItem("token"));
   const [user, setUsers] = useState([]);
   const navigate = useNavigate();
 
@@ -48,6 +50,7 @@ export default function UserList() {
             </div>
             <div>
               <Button
+                disabled={token.tipo === "Administrador" ? false : true}
                 variant="contained"
                 color="inherit"
                 onClick={() => navigate(`/user/${user.id}/edit`)}
@@ -55,6 +58,7 @@ export default function UserList() {
                 Editar
               </Button>
               <Button
+                disabled={token.tipo === "Administrador" ? false : true}
                 variant="contained"
                 color="warning"
                 onClick={() => handleDelete(user.id)}

@@ -31,7 +31,7 @@ const getUserCredentials = async (req, res, next) => {
     if (result.rows.length === 0) {
       return res.status(404).json({ msg: "User not found" });
     }
-    res.json("True");
+    res.json(result.rows[0]);
   } catch (error) {
     next(error);
   }

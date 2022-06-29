@@ -4,9 +4,7 @@ import {
   CardContent,
   Typography,
   Button,
-  TextField,
-  InputAdornment,
-  IconButton,
+  TextField
 } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate} from "react-router-dom";
@@ -16,28 +14,25 @@ import { useNavigate} from "react-router-dom";
 const Login = () => {
   const saveToken = (userToken) => {
     localStorage.setItem("token", JSON.stringify(userToken));
+    localStorage.setItem("carrito");
   };
-  const [user, setUser] = useState({
+  const [credenciales, setCredenciales] = useState({
     username: "",
     password: "",
   });
 
   const handleChange = (e) =>
-    setUser({ ...user, [e.target.name]: e.target.value });
-
+    setCredenciales({ ...credenciales, [e.target.name]: e.target.value });
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const response = await fetch("http://localhost:4000/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
+        body: JSON.stringify(credenciales),
       });
 
-      const msg = {
-        msg: "User not found",
-      };
-      
       if (response.status === 404) {
         alert("Las credenciales no son correctas");
       } else {
@@ -80,7 +75,7 @@ const Login = () => {
                 }}
                 name="username"
                 onChange={handleChange}
-                value={user.username}
+                value={credenciales.username}
                 inputProps={{ style: { color: "white" } }}
                 InputLabelProps={{ style: { color: "white" } }}
               />
@@ -92,9 +87,8 @@ const Login = () => {
                   margin: ".5rem 0",
                 }}
                 name="password"
-
                 onChange={handleChange}
-                value={user.password}
+                value={credenciales.password}
                 inputProps={{ style: { color: "white" } }}
                 InputLabelProps={{ style: { color: "white" } }}
               />

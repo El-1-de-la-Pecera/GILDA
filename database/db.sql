@@ -18,3 +18,14 @@ CREATE TABLE users(
   password VARCHAR(50),
   tipo VARCHAR(50)
 );
+
+CREATE TABLE carrito(
+  id SERIAL PRIMARY KEY,
+  id_usuario INTEGER,
+  name VARCHAR(200),
+  description VARCHAR(400),
+  stock_bodega INTEGER,
+  stock_sala INTEGER,
+  price DECIMAL
+);
+
