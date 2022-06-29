@@ -12,7 +12,7 @@ import {
   FormControl,
   InputLabel,
   Select,
-  MenuItem
+  MenuItem,
 } from "@mui/material";
 
 const ProductForm = () => {
@@ -39,7 +39,7 @@ const ProductForm = () => {
   }, [params.id]);
 
   const loadProduct = async (id) => {
-    const res = await fetch("http://localhost:4000/products/" + id);
+    const res = await fetch("/products/" + id);
     const data = await res.json();
     setProduct({
       name: data.name,
@@ -52,34 +52,28 @@ const ProductForm = () => {
     setEditing(true);
   };
 
-
   const aplicarDescuento = (e) =>
     setDescuento({ ...descuento, [e.target.name]: e.target.value });
 
   const descount = (e) => {
     aplicarDescuento(e);
-    product.price = product.price - ((e.target.value * product.price) / 100);
+    product.price = product.price - (e.target.value * product.price) / 100;
     handleChange(product.price);
-  }
+  };
 
-
-  
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
     try {
       if (editing) {
-        const response = await fetch(
-          "http://localhost:4000/product/" + params.id,
-          {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(product),
-          }
-        );
+        const response = await fetch("/product/" + params.id, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(product),
+        });
         await response.json();
       } else {
-        const response = await fetch("http://localhost:4000/product", {
+        const response = await fetch("/product", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(product),
@@ -174,7 +168,7 @@ const ProductForm = () => {
                 InputLabelProps={{ style: { color: "white" } }}
               />
               <TextField
-                disabled={token.tipo !== "Administrador"}  
+                disabled={token.tipo !== "Administrador"}
                 variant="filled"
                 label="Precio"
                 sx={{
@@ -188,7 +182,7 @@ const ProductForm = () => {
                 InputLabelProps={{ style: { color: "white" } }}
               />
               <TextField
-                disabled={token.tipo !== "Administrador"}  
+                disabled={token.tipo !== "Administrador"}
                 variant="filled"
                 label="SKU"
                 sx={{
@@ -213,13 +207,15 @@ const ProductForm = () => {
                   "Guardar"
                 )}
               </Button>
-              <FormControl fullWidth style={{marginTop:"1rem"}}>
-                <InputLabel
+              <FormControl fullWidth style={{ marginTop: "1rem" }}>
+                <InputLabel style={{ color: "white" }}>Descuento</InputLabel>
+                <Select
+                  value={descuento.values}
+                  label="Tipo"
+                  name="tipo"
+                  onChange={descount}
                   style={{ color: "white" }}
                 >
-                  Descuento
-                </InputLabel>
-                <Select value={descuento.values} label="Tipo"name="tipo" onChange={descount} style={{color:"white"}}>
                   <MenuItem value={10}>10%</MenuItem>
                   <MenuItem value={20}>20%</MenuItem>
                   <MenuItem value={30}>30%</MenuItem>
@@ -233,13 +229,13 @@ const ProductForm = () => {
               </FormControl>
 
               <div>
-              {token.tipo !== "Administrador" ? (
-                <Typography variant="p" textAlign="center" color="white">
-                  Algunas funciones estan desabilitadas
-                </Typography>
-              ) : (
-                ""
-              )}
+                {token.tipo !== "Administrador" ? (
+                  <Typography variant="p" textAlign="center" color="white">
+                    Algunas funciones estan desabilitadas
+                  </Typography>
+                ) : (
+                  ""
+                )}
               </div>
             </form>
           </CardContent>

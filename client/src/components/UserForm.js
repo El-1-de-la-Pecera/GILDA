@@ -35,7 +35,7 @@ const UserForm = () => {
   }, [params.id]);
 
   const loadUser = async (id) => {
-    const res = await fetch("http://localhost:4000/users/" + id);
+    const res = await fetch("/users/" + id);
     const data = await res.json();
     setUser({
       username: data.username,
@@ -52,17 +52,14 @@ const UserForm = () => {
     setLoading(true);
     try {
       if (editing) {
-        const response = await fetch(
-          "http://localhost:4000/user/" + params.id,
-          {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(user),
-          }
-        );
+        const response = await fetch("/user/" + params.id, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(user),
+        });
         await response.json();
       } else {
-        const response = await fetch("http://localhost:4000/user", {
+        const response = await fetch("/user", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(user),
@@ -141,12 +138,14 @@ const UserForm = () => {
                 InputLabelProps={{ style: { color: "white" } }}
               />
               <FormControl fullWidth>
-                <InputLabel
+                <InputLabel style={{ color: "white" }}>Tipo</InputLabel>
+                <Select
+                  value={user.tipo}
+                  label="Tipo"
+                  name="tipo"
+                  onChange={handleChange}
                   style={{ color: "white" }}
                 >
-                  Tipo
-                </InputLabel>
-                <Select value={user.tipo} label="Tipo"name="tipo" onChange={handleChange} style={{color:"white"}}>
                   <MenuItem value={"Administrador"}>Administrador</MenuItem>
                   <MenuItem value={"Reponedor"}>Reponedor</MenuItem>
                   <MenuItem value={"Vendedor"}>Vendedor</MenuItem>

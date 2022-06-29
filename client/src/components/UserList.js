@@ -3,20 +3,19 @@ import { Button, Card, CardContent, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export default function UserList() {
-
   const token = JSON.parse(localStorage.getItem("token"));
   const [user, setUsers] = useState([]);
   const navigate = useNavigate();
 
   const loadUsers = async () => {
-    const response = await fetch("http://localhost:4000/users");
+    const response = await fetch("/users");
     const data = await response.json();
     setUsers(data);
   };
 
   const handleDelete = async (id) => {
     try {
-      await fetch(`http://localhost:4000/user/${id}`, {
+      await fetch(`/user/${id}`, {
         method: "DELETE",
       });
 

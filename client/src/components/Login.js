@@ -4,17 +4,15 @@ import {
   CardContent,
   Typography,
   Button,
-  TextField
+  TextField,
 } from "@mui/material";
 import React, { useState } from "react";
-import { useNavigate} from "react-router-dom";
-
-
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const saveToken = (userToken) => {
     localStorage.setItem("token", JSON.stringify(userToken));
-    localStorage.setItem("carrito");
+    localStorage.setItem("carrito", {});
   };
   const [credenciales, setCredenciales] = useState({
     username: "",
@@ -23,11 +21,11 @@ const Login = () => {
 
   const handleChange = (e) =>
     setCredenciales({ ...credenciales, [e.target.name]: e.target.value });
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("http://localhost:4000/user/login", {
+      const response = await fetch("/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credenciales),
