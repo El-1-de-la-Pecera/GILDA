@@ -71,6 +71,7 @@ const Login = () => {
                   display: "block",
                   margin: ".5rem 0",
                 }}
+                required
                 name="username"
                 onChange={handleChange}
                 value={credenciales.username}
@@ -79,6 +80,8 @@ const Login = () => {
               />
               <TextField
                 variant="filled"
+                type="password"
+                required
                 label="Contraseña"
                 sx={{
                   display: "block",

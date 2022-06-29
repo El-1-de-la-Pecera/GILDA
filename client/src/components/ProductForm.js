@@ -54,11 +54,12 @@ const ProductForm = () => {
 
   const aplicarDescuento = (e) =>
     setDescuento({ ...descuento, [e.target.name]: e.target.value });
-
+  const [activo, setActivo] = useState(false);
   const descount = (e) => {
     aplicarDescuento(e);
-    product.price = product.price - (e.target.value * product.price) / 100;
-    handleChange(product.price);
+    setProduct({...product, price : product.price - (e.target.value * product.price) / 100});
+    // handleChange(product.price);
+    setActivo(true);
   };
 
   const handleSubmit = async (event) => {
@@ -207,14 +208,14 @@ const ProductForm = () => {
                   "Guardar"
                 )}
               </Button>
-              <FormControl fullWidth style={{ marginTop: "1rem" }}>
-                <InputLabel style={{ color: "white" }}>Descuento</InputLabel>
+              <FormControl fullWidth style={{ marginTop: "1rem" }} disabled={activo}>
+                <InputLabel sx={{ color: "white" }}>Descuento</InputLabel>
                 <Select
                   value={descuento.values}
                   label="Tipo"
                   name="tipo"
                   onChange={descount}
-                  style={{ color: "white" }}
+                  sx={{ color: "white" }}
                 >
                   <MenuItem value={10}>10%</MenuItem>
                   <MenuItem value={20}>20%</MenuItem>
